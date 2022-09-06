@@ -40,6 +40,7 @@ public class Professor extends Pessoa implements Serializable {
         this.perfis = professorDTO.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = professorDTO.getDataCriacao();
         this.formacao = professorDTO.getFormacao();
+   
         addPerfis(Perfil.PROFESSOR);
     }
 

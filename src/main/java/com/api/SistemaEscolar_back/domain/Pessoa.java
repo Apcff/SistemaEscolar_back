@@ -1,6 +1,5 @@
 package com.api.SistemaEscolar_back.domain;
 
-
 import com.api.SistemaEscolar_back.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.br.CPF;
