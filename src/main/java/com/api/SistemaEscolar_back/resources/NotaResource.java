@@ -39,6 +39,12 @@ public class NotaResource {
         return ResponseEntity.created(uri).build();
     }
     
+    @PutMapping(value="/{id}")
+	  public ResponseEntity<NotaDTO> update(@PathVariable Integer id, @Valid @RequestBody NotaDTO notaDTO){
+		Nota newNota = notaService.update(id, notaDTO);
+	        return ResponseEntity.ok().body(new NotaDTO(newNota));
+	    }
+    
 	@DeleteMapping(value="{id}")
 	public ResponseEntity<NotaDTO> delete(@PathVariable Integer id){
 		notaService.delete(id);
