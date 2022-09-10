@@ -39,6 +39,12 @@ public class AlunoResource {
         return ResponseEntity.created(uri).build();
     }
     
+    @PutMapping(value="/{id}")
+	  public ResponseEntity<AlunoDTO> update(@PathVariable Integer id, @Valid @RequestBody AlunoDTO alunoDTO){
+		 Aluno newAluno = alunoService.update(id, alunoDTO);
+	        return ResponseEntity.ok().body(new AlunoDTO(newAluno));
+	    }
+    
 	@DeleteMapping(value="{id}")
 	public ResponseEntity<AlunoDTO> delete(@PathVariable Integer id){
 		alunoService.delete(id);
