@@ -38,16 +38,6 @@ public class AlunoService {
         return repository.save(newAluno);
     }
 
-    private void validaPorCpfEEmail(AlunoDTO alunoDTO) {
-        Optional<Pessoa> obj = pessoaRepository.findByCpf(alunoDTO.getCpf());
-        if (obj.isPresent() && obj.get().getId() != alunoDTO.getId()){
-            throw new DataIntegrityViolationException("CPF já cadastrado no sistema!");
-        }
-        obj = pessoaRepository.findByEmail(alunoDTO.getEmail());
-        if (obj.isPresent() && obj.get().getId() != alunoDTO.getId()){
-            throw new DataIntegrityViolationException("E-mail já existente no sistema!");
-        }
-    }
 
     public Aluno update(Integer id, AlunoDTO alunoDto) {
         alunoDto.setId(id);
@@ -60,8 +50,20 @@ public class AlunoService {
     public void delete(Integer id) {
 		Aluno obj = findById(id);
 		if(obj.getId() == 0) {
-			throw new DataIntegrityViolationException("O Aluno: "+	id + " não tem no sistema: " +	obj.getId());
+			throw new DataIntegrityViolationException("O Aluno: "+	
+		id +" não tem no sistema: " +	obj.getId());
 		}
 		repository.deleteById(id);
 	}
+    
+    private void validaPorCpfEEmail(AlunoDTO alunoDTO) {
+        Optional<Pessoa> obj = pessoaRepository.findByCpf(alunoDTO.getCpf());
+        if (obj.isPresent() && obj.get().getId() != alunoDTO.getId()){
+            throw new DataIntegrityViolationException("CPF já cadastrado no sistema!");
+        }
+        obj = pessoaRepository.findByEmail(alunoDTO.getEmail());
+        if (obj.isPresent() && obj.get().getId() != alunoDTO.getId()){
+            throw new DataIntegrityViolationException("E-mail já existente no sistema!");
+        }
+    }
 }
