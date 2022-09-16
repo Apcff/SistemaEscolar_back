@@ -12,6 +12,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "**")
 @RestController
 @RequestMapping(value="/service/notas")
 public class NotaResource {

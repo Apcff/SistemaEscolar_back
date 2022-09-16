@@ -12,12 +12,15 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@CrossOrigin(origins = "**")
 @RestController
 @RequestMapping(value="/service/alunos")
 public class AlunoResource {
 
     @Autowired
     private AlunoService alunoService;
+    
 
     @GetMapping(value="/{id}")
     public ResponseEntity<AlunoDTO> findById(@PathVariable Integer id){
