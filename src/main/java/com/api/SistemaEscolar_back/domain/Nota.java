@@ -22,6 +22,10 @@ public class Nota implements Serializable {
     
     protected Integer aluno_id;
     
+    public Nota() {
+        super();
+    }
+    
        
 	public Nota(NotaDTO notaDTO) {
 		this.id = notaDTO.getId();
